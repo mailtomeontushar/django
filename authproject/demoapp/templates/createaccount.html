@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if msg %}
+    <h3> {{msg|upper}} </h3>
+{% endif %}
+
+
+<form action="{% url 'createaccount' %}" method="post" class="form-group">
+    {% csrf_token %}
+    <table>
+        <tr>
+            <th colspan="2">
+                CREATE ACCOUNT
+            </th>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" class="form-control" name="first_name" placeholder="First Name" required>
+            </td>
+            
+            <td>
+                <input type="text" class="form-control" name="last_name" placeholder="Last Name" required>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="email" class="form-control" name="email" placeholder="Email" size="46" required>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="password" class="form-control" name="password" placeholder="Password" size="46" required>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" class="btn btn-success" value="Create Account">
+            </td>
+            <td>
+                <input type="reset" class="btn btn-danger" value="Clear">
+            </td>
+        </tr>
+    </table>
+</form>
+
+{% endblock content %}
